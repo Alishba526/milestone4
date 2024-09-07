@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editable Resume</title>
+    <link rel="stylesheet" href="index.css">
+    <!--  -->
+</head>
+<body>
+    <div class="container">
+        <h1>Editable Resume</h1>
+        <h1>ALISHBA REHMAN QURESHI</h1>
+        <form id="resumeForm">
+            <section class="form-section" id="formSection">
+                <h2>Personal Information</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address">
+                
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" name="phone">
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                
+                <label for="linkedin">LinkedIn:</label>
+                <input type="url" id="linkedin" name="linkedin">
+            </section>
+
+            <section class="form-section">
+                <h2>Objective</h2>
+                <textarea id="objective" name="objective" rows="4" required></textarea>
+            </section>
+
+            <section class="form-section">
+                <h2>Education</h2>
+                <label for="degree">Degree:</label>
+                <input type="text" id="degree" name="degree">
+                
+                <label for="university">University:</label>
+                <input type="text" id="university" name="university">
+                
+                <label for="edu-dates">Dates:</label>
+                <input type="text" id="edu-dates" name="edu-dates">
+            </section>
+
+            <section class="form-section">
+                <h2>Work Experience</h2>
+                <label for="job-title">Job Title:</label>
+                <input type="text" id="job-title" name="job-title">
+                
+                <label for="company">Company:</label>
+                <input type="text" id="company" name="company">
+                
+                <label for="work-dates">Dates:</label>
+                <input type="text" id="work-dates" name="work-dates">
+                
+                <label for="responsibilities">Responsibilities:</label>
+                <textarea id="responsibilities" name="responsibilities" rows="4"></textarea>
+            </section>
+
+            <section class="form-section">
+                <h2>Skills</h2>
+                <textarea id="skills" name="skills" rows="4"></textarea>
+            </section>
+
+            <button type="button" onclick="generateResume()">Generate Resume</button>
+        </form>
+    </div>
+
+    <script>
+        function generateResume() {
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const linkedin = document.getElementById('linkedin').value;
+            const objective = document.getElementById('objective').value;
+            const degree = document.getElementById('degree').value;
+            const university = document.getElementById('university').value;
+            const eduDates = document.getElementById('edu-dates').value;
+            const jobTitle = document.getElementById('job-title').value;
+            const company = document.getElementById('company').value;
+            const workDates = document.getElementById('work-dates').value;
+            const responsibilities = document.getElementById('responsibilities').value;
+            const skills = document.getElementById('skills').value;
+
+            const resumeData = {
+                name,
+                address,
+                phone,
+                email,
+                linkedin,
+                objective,
+                degree,
+                university,
+                eduDates,
+                jobTitle,
+                company,
+                workDates,
+                responsibilities,
+                skills
+            };
+
+            // Convert resume data to query string
+            const queryString = new URLSearchParams(resumeData).toString();
+
+            // Redirect to resume.html with resume data
+            window.location.href = `resume.html?${queryString}`;
+        }
+    </script>
+</body>
+</html>

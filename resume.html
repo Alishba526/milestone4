@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="resume.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generated Resume</h1>
+        <div id="resumeOutput">
+            <!-- Resume content will be displayed here -->
+        </div>
+        <button onclick="goBack()">Edit Resume</button>
+    </div>
+
+    <script>
+        function getQueryStringValue(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name) || '';
+        }
+
+        function displayResume() {
+            const resumeOutput = document.getElementById('resumeOutput');
+
+            // Get the query parameters
+            const name = getQueryStringValue('name');
+            const address = getQueryStringValue('address');
+            const phone = getQueryStringValue('phone');
+            const email = getQueryStringValue('email');
+            const linkedin = getQueryStringValue('linkedin');
+            const objective = getQueryStringValue('objective');
+            const degree = getQueryStringValue('degree');
+            const university = getQueryStringValue('university');
+            const eduDates = getQueryStringValue('eduDates');
+            const jobTitle = getQueryStringValue('jobTitle');
+            const company = getQueryStringValue('company');
+            const workDates = getQueryStringValue('workDates');
+            const responsibilities = getQueryStringValue('responsibilities');
+            const skills = getQueryStringValue('skills');
+
+            resumeOutput.innerHTML = `
+                <h2>${name}</h2>
+                <p>${address} | ${phone} | ${email} | <a href="${linkedin}" target="_blank">${linkedin}</a></p>
+                
+                <section>
+                    <h3>Objective</h3>
+                    <p>${objective}</p>
+                </section>
+                
+                <section>
+                    <h3>Education</h3>
+                    <p><strong>${degree}</strong><br>${university}<br>${eduDates}</p>
+                </section>
+                
+                <section>
+                    <h3>Work Experience</h3>
+                    <p><strong>${jobTitle}</strong><br>${company}<br>${workDates}</p>
+                    <p>${responsibilities}</p>
+                </section>
+                
+                <section>
+                    <h3>Skills</h3>
+                    <p>${skills}</p>
+                </section>
+            `;
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        // Display the resume when the page loads
+        displayResume();
+    </script>
+</body>
+</html>
